@@ -1,0 +1,10 @@
+Input size: 517
+Frame Pointer (ebp) inside bof():  0xffffd268
+Buffer's address inside bof():     0xffffd1f8
+total 764
+-rw------- 1 root root 315392 Oct 12 22:30 core
+-rwxrwxr-x 1 root root  17880 Oct 12 21:54 server
+-rwxrwxr-x 1 root root 709188 Oct 12 21:54 stack
+Hello 32
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+seed:x:1000:1000::/home/seed:/bin/bash
