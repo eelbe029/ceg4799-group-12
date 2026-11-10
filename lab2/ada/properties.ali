@@ -1,0 +1,24 @@
+V "GNAT Lib v10"
+P ZX
+
+RN
+
+U properties%s		properties.ads		72e07d85 NE OO PK
+
+D properties.ads	20261012225516 72e07d85 properties%s
+D system.ads		20230707070819 4635ec04 system%s
+G a e
+G c Z s s [length_in_domain properties 15 13 none]
+G c Z s s [index_in_bounds properties 23 13 none]
+G c Z s s [buffer_invariant properties 30 13 none]
+X 1 properties.ads
+1K9*Properties 40l5 40e15
+7N4*Max_Buffer_Length 9r48 16r23 32r24
+9I12*Buffer_Index{positive} 24r12
+15V13*Length_In_Domain{boolean} 15>31
+15i31 Input_Length{natural} 16r7
+23V13*Index_In_Bounds{boolean} 23>30
+23i30 I{integer} 24r7
+30V13*Buffer_Invariant{boolean} 31>7
+31i7 Bytes_Written{natural} 32r7
+

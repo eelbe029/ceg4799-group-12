@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+# E3 Niveau 3 - calibrage de l'adresse de retour (stack-L3, 64 bits)
+# Prend le decalage (en decimal) a ajouter a 'buffer' comme argument.
+# Sert a trouver le bon decalage malgre l'ecart d'adresses entre gdb
+# et l'execution directe. Mettre a jour rbp/buffer avec les valeurs
+# relevees sous gdb (stack-L3-dbg, ASLR=0) : p $rbp ; p &buffer.
 import sys
 
 shellcode = (
