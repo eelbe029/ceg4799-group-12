@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_LENGTH 32
+#define MAX_LENGTH 64
 
 /* VULNERABLE baseline: no length/content check before the copy. */
 int validate(const char *input, char *buffer) {

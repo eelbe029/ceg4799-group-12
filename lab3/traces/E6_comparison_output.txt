@@ -1,0 +1,93 @@
+=== Case: valid_short ===
+--- C ---
+status=1 buffer=hello
+exit_code=0
+--- SPARK ---
+ACCEPTED len= 5
+exit_code=0
+
+=== Case: empty ===
+--- C ---
+status=1 buffer=
+exit_code=0
+--- SPARK ---
+REJECTED_EMPTY
+exit_code=0
+
+=== Case: exactly_max_64 ===
+--- C ---
+status=1 buffer=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+exit_code=0
+--- SPARK ---
+ACCEPTED len= 64
+exit_code=0
+
+=== Case: max_plus_one_65 ===
+--- C ---
+status=1 buffer=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+exit_code=0
+--- SPARK ---
+REJECTED_TOO_LONG
+exit_code=0
+
+=== Case: too_long_100 ===
+--- C ---
+exit_code=139
+--- SPARK ---
+REJECTED_TOO_LONG
+exit_code=0
+
+=== Case: too_long_200 ===
+--- C ---
+exit_code=139
+--- SPARK ---
+REJECTED_TOO_LONG
+exit_code=0
+
+=== Case: space_char ===
+--- C ---
+status=1 buffer=hello world
+exit_code=0
+--- SPARK ---
+REJECTED_BAD_CHAR
+exit_code=0
+
+=== Case: shell_metachar ===
+--- C ---
+status=1 buffer=test;rm -rf
+exit_code=0
+--- SPARK ---
+REJECTED_BAD_CHAR
+exit_code=0
+
+=== Case: format_string ===
+--- C ---
+status=1 buffer=%n%n%n%n%n%n%n%n
+exit_code=0
+--- SPARK ---
+REJECTED_BAD_CHAR
+exit_code=0
+
+=== Case: sql_quote ===
+--- C ---
+status=1 buffer=name';DROP--
+exit_code=0
+--- SPARK ---
+REJECTED_BAD_CHAR
+exit_code=0
+
+=== Case: path_traversal ===
+--- C ---
+status=1 buffer=../../etc/passwd
+exit_code=0
+--- SPARK ---
+REJECTED_BAD_CHAR
+exit_code=0
+
+=== Case: massive_overflow_517 ===
+--- C ---
+exit_code=139
+--- SPARK ---
+REJECTED_TOO_LONG
+exit_code=0
+
