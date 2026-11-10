@@ -1,0 +1,37 @@
+﻿Phase 1 of 3: generation of data representation information ...
+Phase 2 of 3: generation of Global contracts ...
+Phase 3 of 3: analysis of data and information flow ...
+alr :  info: implicit aspect Always_Terminates on "All_Allowed" has been proved, subprogram will terminate
+At line:1 char:1
++ alr exec -- gnatprove -P $V --mode=flow --report=all 2>&1 | Out-File  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( info: implicit... will terminate:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+--> input_validator.ads:61:13
+
+ info: data dependencies proved
+--> input_validator.ads:63:09
+
+ info: implicit aspect Always_Terminates on "Is_Valid" has been proved, subprogram will terminate
+--> input_validator.ads:66:13
+
+ info: data dependencies proved
+--> input_validator.ads:68:09
+
+ info: initialization of "Buffer" proved
+--> input_validator.ads:86:07
+
+ info: initialization of "Length" proved
+--> input_validator.ads:87:07
+
+ info: initialization of "Status" proved
+--> input_validator.ads:88:07
+
+ info: data dependencies proved
+--> input_validator.ads:90:06
+
+ info: flow dependencies proved
+--> input_validator.ads:91:06
+Success: all checks proved (9 checks).
+Summary logged in C:\Users\samib\ceg4799-group-12\lab3\validator\obj\gnatprove\gnatprove.out

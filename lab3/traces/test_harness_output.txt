@@ -1,0 +1,25 @@
+﻿=== Input_Validator: test cases (built with -gnata) ===
+[PASS] valid: simple word            len = 5    -> ACCEPTED  buffer = "hello"
+[PASS] valid: file name              len = 11   -> ACCEPTED  buffer = "user_01.txt"
+[PASS] valid: all allowed classes    len = 7    -> ACCEPTED  buffer = "A-b.C_9"
+[PASS] bound: 1 char                 len = 1    -> ACCEPTED  buffer = "a"
+[PASS] bound: 64 chars (max)         len = 64   -> ACCEPTED  buffer = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+[PASS] bound: 65 chars (max + 1)     len = 65   -> REJECTED_TOO_LONG
+[PASS] bound: empty input            len = 0    -> REJECTED_EMPTY
+[PASS] overflow: 517 chars (lab 2)   len = 517  -> REJECTED_TOO_LONG
+[PASS] inject: ';' second command    len = 43   -> REJECTED_BAD_CHAR
+[PASS] inject: $(...) substitution   len = 35   -> REJECTED_BAD_CHAR
+[PASS] inject: backticks             len = 4    -> REJECTED_BAD_CHAR
+[PASS] inject: pipe                  len = 4    -> REJECTED_BAD_CHAR
+[PASS] inject: format string         len = 8    -> REJECTED_BAD_CHAR
+[PASS] inject: path traversal        len = 16   -> REJECTED_BAD_CHAR
+[PASS] inject: space                 len = 3    -> REJECTED_BAD_CHAR
+[PASS] inject: embedded NUL          len = 7    -> REJECTED_BAD_CHAR
+[PASS] inject: newline               len = 6    -> REJECTED_BAD_CHAR
+
+=== Contracts are checked at run time (-gnata) ===
+  'a' satisfies the Allowed_Char predicate
+  ';' violates the Allowed_Char predicate -> Assertion_Error raised (check is active)
+  call with Input'First = 3 violates the precondition -> Assertion_Error raised (check is active)
+
+Result: 17 passed, 0 failed

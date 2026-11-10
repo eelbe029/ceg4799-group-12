@@ -1,0 +1,101 @@
+﻿Phase 1 of 3: generation of data representation information ...
+Phase 2 of 3: generation of Global contracts ...
+Phase 3 of 3: flow analysis and proof ...
+alr :  high: array index check might fail
+At line:1 char:1
++ alr exec -- gnatprove -P $V --mode=prove --level=1 --report=all --cou ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( high: array index check might fail:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+--> input_validator.adb:33:21
+   33 |                Buffer (I) := Input (I);
+
+      |                        ^
+      + e.g. when I = 65
+      + reason for check: value must be a valid index into the array
+      + provers reached time limit before completing the proof
+
+ info: loop invariant preservation proved
+--> input_validator.adb:35:16
+
+ medium: loop invariant might fail in first iteration, cannot prove Buffer (J) = Input (J)
+--> input_validator.adb:35:39
+   35 |                  (for all J in 1 .. I => Buffer (J) = Input (J));
+
+      |                                          ^~~~~~~~~~~~~~~~~~~~~
+      + provers reached time limit before completing the proof
+
+ info: index check proved
+--> input_validator.adb:35:47
+
+ high: array index check might fail
+--> input_validator.adb:35:59
+   35 |                  (for all J in 1 .. I => Buffer (J) = Input (J));
+
+      |                                                              ^
+      + e.g. when I = 2
+      and Input = "-"
+      and Input'First = 2
+      and J = 1
+      + reason for check: value must be a valid index into the array
+      + provers reached time limit before completing the proof
+
+ info: range check proved
+--> input_validator.adb:38:25
+
+ info: implicit aspect Always_Terminates on "All_Allowed" has been proved, subprogram will terminate
+--> input_validator.ads:63:13
+
+ info: index check proved
+--> input_validator.ads:64:34
+
+ info: data dependencies proved
+--> input_validator.ads:65:09
+
+ info: implicit aspect Always_Terminates on "Is_Valid" has been proved, subprogram will terminate
+--> input_validator.ads:68:13
+
+ info: data dependencies proved
+--> input_validator.ads:70:09
+
+ info: initialization of "Buffer" proved
+--> input_validator.ads:78:07
+
+ info: initialization of "Length" proved
+--> input_validator.ads:79:07
+
+ info: initialization of "Status" proved
+--> input_validator.ads:80:07
+
+ info: data dependencies proved
+--> input_validator.ads:82:06
+
+ info: flow dependencies proved
+--> input_validator.ads:83:06
+
+ info: range check proved
+--> input_validator.ads:95:30
+
+ info: index check proved
+--> input_validator.ads:98:29
+
+ medium: array index check might fail
+--> input_validator.ads:98:41
+   98 |                        Buffer (I) = Input (I)
+
+      |                                            ^
+      + reason for check: value must be a valid index into the array
+      + provers reached time limit before completing the proof
+
+ medium: postcondition might fail, cannot prove Buffer (I) in Allowed_Char
+--> input_validator.ads:99:30
+   99 |                        and then Buffer (I) in Allowed_Char),
+
+      |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      + in inlined expression function body at input_validator.ads:99
+      + provers reached time limit before completing the proof
+
+ info: index check proved
+--> input_validator.ads:99:38
+Summary logged in C:\Users\samib\ceg4799-group-12\lab3\validator\obj\gnatprove\gnatprove.out
